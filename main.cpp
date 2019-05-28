@@ -1,7 +1,7 @@
 //============================================================================
-// Name        : CargoManager
+// Name        : cargo.cpp
 // Author      : Alessandro and Manuele (ma Manuele is better)
-// Version     : 1.0
+// Version     : 1.1.0
 // Copyright   : mit
 // Description :
 //============================================================================
@@ -16,7 +16,7 @@ struct nodo {
     int larghezza;
     int profondita;
     int peso;
-    int volume;
+    long long volume;
     nodo *next;
 
     nodo(int a, int b, int c, int d, int e, nodo *f = 0) {
@@ -39,8 +39,6 @@ void insertList(nodo *&list, int altezza, int larghezza, int profondita, int pes
     int max_id = 0;
     if (list->id > max_id)
         max_id = list->id;
-    cout << max_id;
-    cout << "cacca";
     if (!list->next) {
         list->next = new nodo(max_id + 1, altezza, larghezza, profondita, peso);
         return;
@@ -55,12 +53,18 @@ void insertList(nodo *&list, int altezza, int larghezza, int profondita, int pes
 
 void insertBox(nodo *&list, int max_a, int max_l, int max_pro, int max_pe) {
     int altezza, larghezza, profondita, peso;
+    cout << "\naltezza:";
     cin >> altezza;
     if (altezza == -1) {
         return;
     }
     string error = " ";
-    cin >> larghezza >> profondita >> peso;
+    cout << "\nlarghezza:";
+    cin >> larghezza;
+    cout << "\nprofondità:";
+    cin >> profondita;
+    cout << "\npeso:";
+    cin >> peso;
     if (altezza <= max_a)
         if (larghezza <= max_l)
             if (profondita <= max_pro)
@@ -87,71 +91,7 @@ void displayBox(nodo *list) {
         return;
     cout << list->id;
     displayBox(list->next);
-    /*displayBox(tree->right);
-    cout << tree->altezza << endl;
-    displayBox(tree->left);*/
-
 }
-
-/*
- *
- * nodo* insertBox(nodo* tree, int id, int altezza, int larghezza, int profondita,
- int peso) {
- if (!tree)
- return new nodo(id, altezza, larghezza, profondita, peso);
- int volume = altezza * larghezza * profondita;
- if (volume < tree->altezza)
- tree->left = insertBox(tree->left, id, altezza, larghezza, profondita,
- peso);
- else
- tree->right = insertBox(tree->right, id, altezza, larghezza, profondita,
- peso);
- return tree;
- }
-
-
- nodo* cercaPiuAlto(nodo* tree) {
- nodo* max = 0;
- if (!tree)
- return 0;
- displayBox(tree->right);
- if (cercaPiuAlto(tree) > max){
- max = cercaPiuAlto(tree);
- }
-
-
- displayBox(tree->left);
- }
-
- int insert(nodo* & tree, int a, int b, int c, int d, int id = 0) {
- cout << "Nuova scatola:";
- int altezza;
- cin >> altezza;
- if (altezza != -1) {
- int larghezza, profondita, peso;
- cin >> larghezza >> profondita >> peso;
- if (altezza < a)
- if (larghezza < b)
- if (profondita < c)
- if (peso < d) {
- tree = insertBox(tree, id, altezza, larghezza,
- profondita, peso);
-
- } else
- cout << "peso eccessivo" << endl;
- else
- cout << "profondita eccessiva" << endl;
- else
- cout << "larghezza eccessiva" << endl;
- else
- cout << "altezza eccessiva" << endl;
- insert(tree, a, b, c, d, id + 1);
- }
- return id;
- }
-
-
- */
 
 int main() {
 
@@ -166,7 +106,7 @@ int main() {
     cout << "\npeso:";
     cin >> peso;
 
-    bool Spazio[altezza][profondita][larghezza];
+    //bool Spazio[altezza][profondita][larghezza];
 
     cout << "\nOk ora iniziamo ad inserire i pacchi:" << endl;
 
