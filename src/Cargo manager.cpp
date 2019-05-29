@@ -17,9 +17,8 @@ void insertBox(nodo *&list, int max_a, int max_l, int max_pro, int max_pe) {
 	int altezza, larghezza, profondita, peso;
 	cout << "\naltezza:";
 	cin >> altezza;
-	if (altezza == -1) {
-		return;                                                                                                                                                                                               00
-	}
+	if (altezza == -1)
+		return;
 	string error = " ";
 	cout << "\nlarghezza:";
 	cin >> larghezza;
@@ -31,7 +30,7 @@ void insertBox(nodo *&list, int max_a, int max_l, int max_pro, int max_pe) {
 		if (larghezza <= max_l)
 			if (profondita <= max_pro)
 				if (peso <= max_pe) {
-					insertList(list, altezza, larghezza, profondita, peso);
+					insertList(list,idmax(list)+1,altezza, larghezza, profondita, peso);
 
 				} else
 					error = "peso troppo alto";
@@ -48,7 +47,12 @@ void insertBox(nodo *&list, int max_a, int max_l, int max_pro, int max_pe) {
 	insertBox(list, max_a, max_l, max_pro, max_pe);
 }
 
+/*
+int ordina(nodo* list,int max,int ottimale=100){
+	int a=larmax(list,0);
+}
 
+*/
 int main() {
 
 	cout << "Ok dammi le dimensioni del cargo che lo riempiamo";
