@@ -31,7 +31,7 @@ void insertBox(nodo *&list, int max_a, int max_l, int max_pro, int max_pe) {
 		if (larghezza <= max_l)
 			if (profondita <= max_pro)
 				if (peso <= max_pe) {
-					insertList(list, altezza, larghezza, profondita, peso);
+					insertList(list,idmax(list),altezza, larghezza, profondita, peso);
 
 				} else
 					error = "peso troppo alto";
