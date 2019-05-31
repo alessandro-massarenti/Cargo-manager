@@ -19,5 +19,7 @@ struct rating {
 	}
 };
 
+void insertRating(rating*&, int, int);
+bool changeRating(rating*&, int, int);
 
 #endif /* LISTA_RATING_H_ */
