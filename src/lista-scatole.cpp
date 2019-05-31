@@ -8,19 +8,25 @@
 #include <iostream>
 #include "lista-scatole.h"
 using namespace std;
-int idmax(nodo* list,int max=0){
-	    	if(!list)
-	    		return max;
-	    	if(max<list->id)
-	    		max=list->id;
-	    	return idmax(list->next,max);
+
+void insertList(nodo *&list, int altezza, int larghezza, int profondita,int peso) {
+	if (!list) {
+		list = new nodo(0, altezza, larghezza, profondita, peso);
+		return;
+	}
+	int max_id = 0;
+	if (list->id > max_id)
+		max_id = list->id;
+	if (!list->next) {
+		list->next = new nodo(max_id + 1, altezza, larghezza, profondita, peso);
+		return;
+	}
+	insertList(list->next, altezza, larghezza, profondita, peso);
+
 }
-void insertList(nodo *&list,int id, int altezza, int larghezza, int profondita, int peso) {
-	if(!list)
-	list=new nodo(id, altezza, larghezza, profondita, peso);
-	else
-		insertList(list->next,id,altezza, larghezza, profondita, peso);
-}
+// Post : e' stato inserito un elemento a fine lista
+
+
 void displayBox(nodo *list) {
 	if (!list)
 		return;
