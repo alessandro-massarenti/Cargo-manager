@@ -31,7 +31,12 @@ struct nodo {
 
 };
 
-void insertList(nodo*&, int, int, int,int);
+int idmax(nodo*);
+int altmax(nodo*);
+int larmax(nodo*);
+int promax(nodo*);
+int pesmax(nodo*);
+void insertList(nodo*&,int, int, int, int,int);
 void displayBox(nodo*);
 
 

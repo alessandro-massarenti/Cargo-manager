@@ -9,23 +9,55 @@
 #include "lista-scatole.h"
 using namespace std;
 
-void insertList(nodo *&list, int altezza, int larghezza, int profondita,int peso) {
-	if (!list) {
-		list = new nodo(0, altezza, larghezza, profondita, peso);
-		return;
-	}
-	int max_id = 0;
-	if (list->id > max_id)
-		max_id = list->id;
-	if (!list->next) {
-		list->next = new nodo(max_id + 1, altezza, larghezza, profondita, peso);
-		return;
-	}
-	insertList(list->next, altezza, larghezza, profondita, peso);
+int idmax(nodo* list) {
+	if (!list)
+		return 0;
+	int max = idmax(list->next);
+	if (max < list->id)
+		max = list->id;
+	return max;
+}
+int altmax(nodo* list) {
+	if (!list)
+		return 0;
+	int max = altmax(list->next);
+	if (max < list->altezza)
+		max = list->altezza;
+	return max;
+}
+int larmax(nodo* list) {
+	if (!list)
+		return 0;
+	int max = larmax(list->next);
+	if (max < list->larghezza)
+		max = list->larghezza;
+	return max;
+}
+int promax(nodo* list) {
+	if (!list)
+		return 0;
+	int max = promax(list->next);
+	if (max < list->profondita)
+		max = list->profondita;
+	return max;
+}
+int pesmax(nodo* list) {
+	if (!list)
+		return 0;
+	int max = pesmax(list->next);
+	if (max < list->peso)
+		max = list->peso;
+	return max;
+}
 
+void insertList(nodo *&list, int id, int altezza, int larghezza, int profondita,
+		int peso) {
+	if (!list)
+		list = new nodo(id, altezza, larghezza, profondita, peso);
+	else
+		insertList(list->next, id, altezza, larghezza, profondita, peso);
 }
 // Post : e' stato inserito un elemento a fine lista
-
 
 void displayBox(nodo *list) {
 	if (!list)
@@ -33,4 +65,3 @@ void displayBox(nodo *list) {
 	cout << list->id;
 	displayBox(list->next);
 }
-
