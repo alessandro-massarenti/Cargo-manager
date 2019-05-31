@@ -7,8 +7,11 @@
 
 #include <iostream>
 #include "lista-scatole.h"
+
 using namespace std;
 
+
+// max value of the things named in the function name
 int idmax(nodo* list) {
 	if (!list)
 		return 0;
