@@ -8,6 +8,7 @@
 #include <iostream>
 #include "lista-scatole.h"
 using namespace std;
+
 int idmax(nodo* list) {
 	if (!list)
 		return 0;
@@ -56,6 +57,8 @@ void insertList(nodo *&list, int id, int altezza, int larghezza, int profondita,
 	else
 		insertList(list->next, id, altezza, larghezza, profondita, peso);
 }
+// Post : e' stato inserito un elemento a fine lista
+
 void displayBox(nodo *list) {
 	if (!list)
 		return;
