@@ -10,6 +10,7 @@
 
 #include "lista-rating.h"
 #include "lista-scatole.h"
+#include "main-sorting-engine.h"
 
 using namespace std;
 
@@ -74,6 +75,10 @@ int main() {
 
 	if (!listascatole)
 		cout << "\nil box era vuoto";
-	else
-		displayBox(listascatole);
+	else {
+        cout << "\nLa lista delle scatole è ordinata così rispetto a come le hai inserite:" << endl;
+        displayBox(listascatole);
+        cout << "\nOra calcolo bro";
+        cout << "\nDovrai inserirle dal fondo seguendo questo ordine:";
+    }
 }
